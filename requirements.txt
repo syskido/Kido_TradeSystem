@@ -1,0 +1,7 @@
+pyqt5
+pyinstaller
+openpyxl
+loguru==0.6.0
+pandas==2.0.3
+
+
