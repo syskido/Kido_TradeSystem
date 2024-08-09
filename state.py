@@ -4,13 +4,19 @@ import sys
 
 class PyQt_kiwoomConnect:
     """
-    수동 로그인설정인 경우 로그인창을 출력해서 로그인을 시도하거나 자동로그인 설정인 경우 로그인창 출력없이 로그인을 시도합니다.
+    현재 로그인 상태를 알려줍니다.
+    리턴값 1:연결, 0:연결안됨
     """
     def __init__(self) -> None:
         self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self.kiwoom.dynamicCall("CommConnect()")
-        print('kiwoom OpenAPI CommConnect() 호출 성공')
 
+        print('kiwoom OpenAPI CommConnect() 호출 성공')
+        GetConnectState = self.kiwoom.dynamicCall("GetConnectState()")
+        # 현재 로그인 상태를 알려줍니다.
+
+        print(GetConnectState)
+        sys.exit()
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     kiwoomLogin = PyQt_kiwoomConnect()
